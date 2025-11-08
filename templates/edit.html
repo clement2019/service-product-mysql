@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Service{% endblock %}
+
+{% block content %}
+<h2 style="text-align:center; margin-bottom:20px;">Edit Service</h2>
+
+<form action="{{ url_for('edit_service', id=service.Id) }}" method="POST" style="width:50%; margin:auto;">
+    <label for="Services">Service Name:</label><br>
+    <input type="text" id="Services" name="Services" value="{{ service.Services }}" style="width:100%; padding:8px; margin:10px 0;"><br>
+    <button type="submit" style="padding:8px 15px; background-color:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer;">Update Service</button>
+</form>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Success/Error toast -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        {% for category, message in messages %}
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: '{{ category }}',
+          title: '{{ message }}',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true
+        });
+        {% endfor %}
+      });
+    </script>
+  {% endif %}
+{% endwith %}
+{% endblock %}

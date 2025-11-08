@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Flask App{% endblock %}</title>
+
+    <!-- Include SweetAlert and CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #fdfdfd; margin: 0; padding: 20px;">
+    
+    <nav style="background-color: #333; padding: 10px;">
+        <a href="{{ url_for('list_services') }}" style="color: white; margin-right: 15px; text-decoration: none;">List</a>
+        <a href="{{ url_for('add_service') }}" style="color: white; text-decoration: none;">Add Service</a>
+    </nav>
+
+    <div class="container" style="margin-top: 20px;">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>
