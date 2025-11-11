@@ -10,7 +10,7 @@ DataBase = SQLC.connect(
 def showDBs():
   Cursor = DataBase.cursor()
   Cursor.execute("SHOW DATABASES")
-  for i in Cursor:
+  for i in Cursor.fetchall():
     if len(i)>0:
       
       print(i)

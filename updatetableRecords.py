@@ -1,6 +1,6 @@
 import mysql.connector
 
-# connect to database
+# Connect to database
 dataBase = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -10,45 +10,34 @@ dataBase = mysql.connector.connect(
 
 def selectrecords():
     cursorObject = dataBase.cursor()
-    # correct SQL syntax and parameter style
     sql = "SELECT * FROM tbl_service"
-    # must be a tuple
-
     cursorObject.execute(sql)
-    # printing all the recoords
-   
+    
+    # print all the records
+    for record in cursorObject.fetchall():
+        print(record)
 
-    #  commit the change to actually save it
-    #dataBase.commit()
-    for i in cursorObject:
-       print(i)
-       
-       #print(sql)
-        #print("Records retrieved from tbl_service successfully")
 
-        # close the connection
-        # prepare a cursor object
 def updatetables():
+    oldrowname = input("Enter old service name: ")
+    newrowname = input("Enter new service name: ")
+    
     cursorObject = dataBase.cursor()
-
-    records = "UPDATE tbl_service SET Services = 'entry-level training' WHERE Id = 10"
     
-    cursorObject.execute(records)
+    # Use placeholders (%s) for values
+    sql = "UPDATE tbl_service SET Services = %s WHERE Services = %s"
+    values = (newrowname, oldrowname)
     
+    cursorObject.execute(sql, values)
     dataBase.commit()
     
-    print("Data updated in tbl_service successfully")
+    print("✅ Data updated in tbl_service successfully.")
 
-selectrecords()
+
+# Run the functions
 updatetables()
+selectrecords()
 
-
+# Close connection
 dataBase.close()
-
-
-
-
-
-
-
 
