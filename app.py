@@ -13,7 +13,7 @@ app.secret_key = os.environ.get("SECRET_KEY", "supersecretkey")  # needed for fl
 # Configure MySQL
 app.config['MYSQL_HOST'] = os.environ.get('MYSQL_HOST', 'localhost')
 app.config['MYSQL_USER'] = os.environ.get('MYSQL_USER', 'root')
-app.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_PASSWORD', '#W15w2020#')
+app.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_PASSWORD', 'Super7898$$#')
 app.config['MYSQL_DB'] = os.environ.get('MYSQL_DB', 'serviceDB')
 
 mysql = MySQL(app)
